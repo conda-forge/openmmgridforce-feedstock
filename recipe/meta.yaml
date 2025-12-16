@@ -1,17 +1,17 @@
 {% set name = "openmmgridforce" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/jimtufts/openmmgridforce/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 53657419ff349adae5fdf9dcbc8a04c1af3dfee898462dc4605d5959f32d3b40
+  url: https://github.com/jimtufts/openmmgridforce/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 049b7448e18634cd5d9ef31a4e2fda68ce634db7165444c1fccba7e9095b55c6
 
 build:
   number: 0
-  skip: True  # [win or osx]
+  skip: true  # [win or osx]
 
 requirements:
   build:
