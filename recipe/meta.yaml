@@ -1,5 +1,5 @@
 {% set name = "openmmgridforce" %}
-{% set version = "0.7.1" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/jimtufts/openmmgridforce/archive/refs/tags/{{ version }}.tar.gz
-  sha256: f9aacaf63f839c957f60b022c6fa6df3a309438ea28314949f67cc7d667ef599
+  sha256: c404eb3bdb237dfeff8a061df47df31e2c221a773be96637a997c8a581a0eeda
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win or osx]
 
 requirements:
@@ -49,7 +49,9 @@ test:
     - pip check
     # test_auto_grid.py is temporarily disabled: its grid file I/O tests trigger an
     # OOM kill (exit 137) on CI, a regression from the 0.7.x tiled grid I/O changes.
-    - cd python/tests && pytest test_grid_force.py test_auto_scaling.py -v
+    - (cd python/tests && pytest test_grid_force.py test_auto_scaling.py -v)
+    # Cross-platform parity + generation-grounding harness (Reference+CPU, GPU-free).
+    - (cd python/tests && python test_platform_parity.py ci)
 
 about:
   home: https://github.com/jimtufts/openmmgridforce
